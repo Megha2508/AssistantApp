@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:flutter_dialogflow/flutter_dialogflow.dart';
 
 import 'dart:async';
@@ -29,6 +30,10 @@ class _RulesScreenState extends State<RulesScreen> {
     initPlatformState();
   }
 
+  static const channel1 = BasicMessageChannel<String>('reply', StringCodec());
+  static const channel2 = BasicMessageChannel<String>('title', StringCodec());
+//  static const channel3 = BasicMessageChannel<String>('packageName', StringCodec());
+
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
     Notifications notifications = new Notifications();
@@ -37,13 +42,16 @@ class _RulesScreenState extends State<RulesScreen> {
   }
 
   // ignore: missing_return
-  Widget onData(NotificationEvent event) {
+  Future<Widget> onData(NotificationEvent event) async {
     messages.add(event.getText());
     for (String i in intents) {
       if (event.getText() == i) {
         print("message is $i");
         var index = intents.indexOf(i);
         print("response is ${responses[index]}");
+        await channel1.send('${responses[index]}');
+        await channel2.send('${event.getTitle()}');
+//        await channel3.send('${event.getPackageName()}');
       }
     }
   }
@@ -138,11 +146,11 @@ class _RulesScreenState extends State<RulesScreen> {
                       print(intents);
                       print(responses);
                       print(ruleCount);
-                      AlertDialog(
-                        content: SingleChildScrollView(
-                          child: ListBody(children: <Widget>[onData(event)]),
-                        ),
-                      );
+//                      AlertDialog(
+//                        content: SingleChildScrollView(
+//                          child: ListBody(children: <Widget>[onData(event)]),
+//                        ),
+//                      );
                     },
                   ),
                 ),
