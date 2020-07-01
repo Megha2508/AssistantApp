@@ -1,4 +1,4 @@
-package com.example.yourassisstant
+package com.example.yourassistant
 
 import android.annotation.TargetApi
 import android.content.Intent

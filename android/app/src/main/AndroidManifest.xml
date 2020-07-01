@@ -48,7 +48,7 @@
         <receiver android:name="cachet.plugins.notifications.NotificationWear">
         </receiver>
         <service
-            android:name="com.example.yourassisstant.WhatsappAccessibilityService"
+            android:name=".WhatsappAccessibilityService"
             android:label="Accessibility Service"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <meta-data

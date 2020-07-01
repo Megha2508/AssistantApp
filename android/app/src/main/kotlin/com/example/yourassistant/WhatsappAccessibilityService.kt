@@ -1,4 +1,4 @@
-package com.example.yourassisstant
+package com.example.yourassistant
 
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.AccessibilityServiceInfo
