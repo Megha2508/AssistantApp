@@ -4,7 +4,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:accessibilityEventTypes="typeWindowContentChanged"
         android:packageNames="com.whatsapp"
-        android:accessibilityFeedbackType="feedbackSpoken"
+        android:accessibilityFeedbackType="feedbackGeneric"
+        android:canPerformGestures="true"
         android:notificationTimeout="500"
         android:canRetrieveWindowContent="true"/>
 </resources>

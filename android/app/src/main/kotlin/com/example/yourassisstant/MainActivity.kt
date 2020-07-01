@@ -10,7 +10,6 @@ import io.flutter.app.FlutterActivity
 import io.flutter.plugin.common.BasicMessageChannel
 import io.flutter.plugin.common.StringCodec
 import io.flutter.plugins.GeneratedPluginRegistrant
-import io.flutter.plugins.WhatsappAccessibilityService
 
 class MainActivity: FlutterActivity() {
     @TargetApi(Build.VERSION_CODES.DONUT)
@@ -18,8 +17,7 @@ class MainActivity: FlutterActivity() {
         super.onCreate(savedInstanceState)
         Log.e("main","yes")
         val intent = Intent(this, WhatsappAccessibilityService::class.java)
-        //startService(intent)
-
+        startService(intent)
         GeneratedPluginRegistrant.registerWith(this)
         val channel1 = BasicMessageChannel<String>(flutterView, "reply", StringCodec.INSTANCE)
         val channel2 = BasicMessageChannel<String>(flutterView, "title", StringCodec.INSTANCE)
